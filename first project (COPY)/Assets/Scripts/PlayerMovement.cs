@@ -1,11 +1,15 @@
 using UnityEngine;
 
+
 public class PlayerMovement : MonoBehaviour {
 
     public Rigidbody rb;
 
     public float forwardForce = 2000f;
     public float sidewaysForce = 500f;
+    public float verticalForce = 75f;
+
+    
 
 
 
@@ -37,6 +41,14 @@ public class PlayerMovement : MonoBehaviour {
         if (rb.position.y < -10f)
         {
             FindObjectOfType<GameManager>().EndGame();
+        }
+
+        if (isGrounded = true)
+        {
+            if ( Input.GetKey("space"))
+            {
+                rb.AddForce(verticalForce, 0, 0, ForceMode.VelocityChange);
+            }
         }
     }
 }
