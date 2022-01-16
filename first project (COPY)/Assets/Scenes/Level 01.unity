@@ -2411,8 +2411,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 9083260785466472311, guid: f3110b9821947d040af529236a68d36e, type: 3}
+      propertyPath: forwardForce
+      value: 8000
+      objectReference: {fileID: 0}
+    - target: {fileID: 9083260785466472311, guid: f3110b9821947d040af529236a68d36e, type: 3}
       propertyPath: verticalForce
-      value: 60
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9083260785466472311, guid: f3110b9821947d040af529236a68d36e, type: 3}
+      propertyPath: downwardsForce
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9083260785466472312, guid: f3110b9821947d040af529236a68d36e, type: 3}
       propertyPath: m_RootOrder

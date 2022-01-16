@@ -7,18 +7,16 @@ public class PlayerMovement : MonoBehaviour {
 
     public float forwardForce = 2000f;
     public float sidewaysForce = 500f;
-    public float verticalForce = 75f;
-
-    
-
-
+    public float verticalForce = 50f;
+    public float downwardsForce = 800f;
 
     // Update is called once per frame
     void FixedUpdate()
     {
         rb.AddForce(0, 0, forwardForce * Time.deltaTime);
+        rb.AddForce(0, -downwardsForce * Time.deltaTime, 0);
 
-        if ( Input.GetKey("d") )
+         if ( Input.GetKey("d") )
         {
             rb.AddForce(sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
         }
@@ -37,18 +35,37 @@ public class PlayerMovement : MonoBehaviour {
         {
             rb.AddForce(sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
         }
-
-        if (rb.position.y < -10f)
+       
+        if (rb.position.y < -5f)
         {
             FindObjectOfType<GameManager>().EndGame();
         }
 
-        if (isGrounded = true)
+
+    }
+
+    void Update()
+    {      
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            if ( Input.GetKey("space"))
-            {
-                rb.AddForce(verticalForce, 0, 0, ForceMode.VelocityChange);
-            }
+            rb.AddForce(0, verticalForce * Time.deltaTime, 0, ForceMode.Impulse);
+        }
+
+         if (Input.GetKeyDown(KeyCode.W))
+        {
+            rb.AddForce(0, verticalForce * Time.deltaTime, 0, ForceMode.Impulse);
+        }
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            rb.AddForce(0, -verticalForce * Time.deltaTime, 0, ForceMode.Impulse);
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            rb.AddForce(0, -verticalForce * Time.deltaTime, 0, ForceMode.Impulse);
         }
     }
-}
+} 
+
+
